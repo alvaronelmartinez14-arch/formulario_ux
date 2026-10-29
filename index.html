@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Paquete Turístico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Título principal -->
+        <header class="header-title">
+            <h1>Crear paquete turístico</h1>
+            <p>Agrega un nuevo paquete de viaje al catálogo.</p>
+        </header>
+
+        <form id="travelForm" class="form-layout" novalidate>
+            
+            <!-- Columna Izquierda: Secciones de Información -->
+            <div class="form-columns">
+                
+                <!-- 1. Información General y Destino -->
+                <section class="form-section">
+                    <h2>Información del Destino</h2>
+                    
+                    <div class="form-group">
+                        <label for="tituloPaquete">Título del paquete *</label>
+                        <input type="text" id="tituloPaquete" required placeholder="Ej. Escapada tropical a Cartagena">
+                        <span class="error-message" id="error-tituloPaquete">El campo título del paquete es obligatorio.</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="paisDestino">País de destino *</label>
+                            <input type="text" id="paisDestino" required placeholder="Ej. Colombia">
+                            <span class="error-message" id="error-paisDestino">El campo país es obligatorio.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="ciudadSalida">Ciudad de salida *</label>
+                            <input type="text" id="ciudadSalida" required placeholder="Ej. Bogotá">
+                            <span class="error-message" id="error-ciudadSalida">El campo ciudad de salida es obligatorio.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fechaSalida">Fecha de salida *</label>
+                            <input type="date" id="fechaSalida" required>
+                            <span class="error-message" id="error-fechaSalida">El campo fecha de salida es obligatorio.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="fechaRegreso">Fecha de regreso *</label>
+                            <input type="date" id="fechaRegreso" required>
+                            <span class="error-message" id="error-fechaRegreso">El campo fecha de regreso es obligatorio.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cantidadViajeros">Cantidad de viajeros *</label>
+                            <input type="number" id="cantidadViajeros" min="1" value="1" required>
+                            <span class="error-message" id="error-cantidadViajeros">Debe indicar al menos 1 viajero.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="precioPersona">Precio por persona ($) *</label>
+                            <input type="number" id="precioPersona" min="0" step="100" required placeholder="Ej. 1200000">
+                            <span class="error-message" id="error-precioPersona">El campo precio es obligatorio.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="transporte">Transporte *</label>
+                            <select id="transporte" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="avisot">Avión incluido</option>
+                                <option value="terrestre">Transporte terrestre</option>
+                                <option value="ninguno">Sin transporte</option>
+                            </select>
+                            <span class="error-message" id="error-transporte">Selecciona un tipo de transporte.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="allojamiento">Tipo de alojamiento *</label>
+                            <select id="allojamiento" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="hotel5">Hotel 5 Estrellas</option>
+                                <option value="hotel3">Hotel 3 Estrellas</option>
+                                <option value="resort">Resort All Inclusive</option>
+                                <option value="hostal">Hostal / Boutique</option>
+                            </select>
+                            <span class="error-message" id="error-allojamiento">Selecciona el tipo de alojamiento.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servicios">Servicios incluidos</label>
+                        <select id="servicios" multiple class="multi-select">
+                            <option value="desayuno">Desayuno diario</option>
+                            <option value="tours">Tours guiados</option>
+                            <option value="traslados">Traslados aeropuerto-hotel</option>
+                            <option value="seguro">Seguro de viaje</option>
+                        </select>
+                        <small>Mantén presionado Ctrl (Cmd en Mac) para seleccionar varios.</small>
+                    </div>
+                </section>
+
+                <!-- 2. Descripción -->
+                <section class="form-section">
+                    <h2>Descripción</h2>
+                    <div class="form-group">
+                        <label for="sinopsis">Descripción detallada *</label>
+                        <textarea id="sinopsis" rows="4" required placeholder="Detalles de lo que incluye el paquete de viaje..."></textarea>
+                        <span class="error-message" id="error-sinopsis">El campo descripción es obligatorio.</span>
+                    </div>
+                </section>
+
+                <!-- 3. Configuración y publicación -->
+                <section class="form-section">
+                    <h2>Configuración y publicación</h2>
+                    <div class="form-group">
+                        <label for="estadoPublicacion">Estado de disponibilidad *</label>
+                        <select id="estadoPublicacion" required>
+                            <option value="borrador">Borrador</option>
+                            <option value="disponible">Disponible para reserva</option>
+                            <option value="agotado">Agotado</option>
+                        </select>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Columna Derecha: Imagen / Póster del Destino -->
+            <div class="sidebar-column">
+                <div class="poster-card">
+                    <h3>Imagen del destino</h3>
+                    <div class="poster-preview" id="posterPreview">
+                        <span>Sin imagen</span>
+                    </div>
+                    <div class="form-group file-upload-group">
+                        <label for="archivoPoster">Archivo de imagen</label>
+                        <input type="file" id="archivoPoster" accept="image/png, image/jpeg, image/webp">
+                        <small>Se guardará en base de datos como Base64. Formatos JPG, PNG o WebP de hasta 2 MB.</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="form-actions">
+                <button type="button" id="btnCancelar" class="btn btn-secondary">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar paquete</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
