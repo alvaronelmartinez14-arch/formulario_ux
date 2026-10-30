@@ -50,6 +50,12 @@ body {
     margin-bottom: 12px;
 }
 
+.auth-panel.is-authenticated #authFields,
+.auth-panel.is-authenticated #btnSignIn,
+.auth-panel.is-authenticated #btnSignUp {
+    display: none;
+}
+
 .auth-fields {
     max-width: 720px;
     margin-top: 12px;
@@ -78,6 +84,89 @@ body {
 
 .status-message.error {
     color: #b13d37;
+}
+
+.packages-panel {
+    margin-bottom: 28px;
+}
+
+.packages-panel[hidden] {
+    display: none;
+}
+
+.packages-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid #d5e1dc;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+}
+
+.packages-header h2 {
+    font-size: 18px;
+    color: #21483d;
+    margin-bottom: 4px;
+}
+
+.packages-list {
+    display: grid;
+    gap: 10px;
+}
+
+.package-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid #d5e1dc;
+    border-left: 4px solid #75a994;
+    border-radius: 4px;
+    padding: 14px;
+    background: #f8fbf9;
+}
+
+.package-item h3 {
+    font-size: 15px;
+    color: #21483d;
+    margin-bottom: 5px;
+}
+
+.package-meta {
+    color: #61736d;
+    font-size: 13px;
+    line-height: 1.55;
+    white-space: pre-line;
+}
+
+.package-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.package-actions .btn {
+    padding: 8px 12px;
+}
+
+.btn-danger {
+    background: #fff;
+    border: 1px solid #d9b8b5;
+    color: #a23d36;
+}
+
+.btn-danger:hover {
+    background: #fff4f2;
+}
+
+.empty-state {
+    padding: 18px 14px;
+    border: 1px dashed #b9cbc3;
+    border-radius: 4px;
+    color: #61736d;
+    font-size: 14px;
 }
 
 .form-layout {
@@ -232,6 +321,19 @@ body {
 }
 
 @media (max-width: 520px) {
+    .packages-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .package-item {
+        grid-template-columns: 1fr;
+    }
+
+    .package-actions {
+        justify-content: flex-start;
+    }
+
     .form-columns,
     .sidebar-column {
         min-width: 0;

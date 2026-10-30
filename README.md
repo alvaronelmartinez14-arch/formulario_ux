@@ -6,9 +6,11 @@ Formulario web estático para crear paquetes turísticos y guardarlos en Supabas
 
 - Captura destino, fechas, viajeros, precio, transporte, alojamiento y descripción.
 - Permite elegir servicios incluidos y agregar servicios personalizados.
+- Lista los paquetes guardados y permite editarlos o eliminarlos.
 - Guarda los paquetes en la tabla `public.travel_packages`.
 - Sube imágenes JPG, PNG o WebP de hasta 2 MB al bucket privado `package-posters`.
 - Usa Supabase Auth con correo y contraseña.
+- Oculta los campos de acceso y limpia la contraseña al iniciar sesión.
 
 ## Ejecutar localmente
 

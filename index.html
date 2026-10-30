@@ -36,6 +36,19 @@
             </div>
         </section>
 
+        <section class="packages-panel" id="packagesPanel" aria-labelledby="packagesTitle" hidden>
+            <div class="packages-header">
+                <div>
+                    <h2 id="packagesTitle">Paquetes creados</h2>
+                    <p id="packagesSummary" class="status-message">Tus paquetes guardados aparecerán aquí.</p>
+                </div>
+                <button type="button" id="btnRefreshPackages" class="btn btn-secondary">Actualizar lista</button>
+            </div>
+            <p id="packagesStatus" class="status-message" role="status"></p>
+            <div id="packagesList" class="packages-list"></div>
+            <p id="packagesEmpty" class="empty-state" hidden>No tienes paquetes guardados todavía.</p>
+        </section>
+
         <form id="travelForm" class="form-layout" novalidate hidden>
             
             <!-- Columna Izquierda: Secciones de Información -->
