@@ -16,7 +16,27 @@
             <p>Agrega un nuevo paquete de viaje al catálogo.</p>
         </header>
 
-        <form id="travelForm" class="form-layout" novalidate>
+        <section class="auth-panel" aria-labelledby="authTitle">
+            <h2 id="authTitle">Acceso al formulario</h2>
+            <p id="authStatus" class="status-message" role="status">Inicia sesión con tu cuenta de la aplicación.</p>
+            <div class="form-row auth-fields" id="authFields">
+                <div class="form-group">
+                    <label for="authEmail">Correo electrónico</label>
+                    <input type="email" id="authEmail" autocomplete="email" required placeholder="nombre@correo.com">
+                </div>
+                <div class="form-group">
+                    <label for="authPassword">Contraseña</label>
+                    <input type="password" id="authPassword" autocomplete="current-password" required placeholder="Tu contraseña">
+                </div>
+            </div>
+            <div class="auth-actions">
+                <button type="button" id="btnSignIn" class="btn btn-primary">Iniciar sesión</button>
+                <button type="button" id="btnSignUp" class="btn btn-secondary">Crear cuenta</button>
+                <button type="button" id="btnSignOut" class="btn btn-secondary" hidden>Cerrar sesión</button>
+            </div>
+        </section>
+
+        <form id="travelForm" class="form-layout" novalidate hidden>
             
             <!-- Columna Izquierda: Secciones de Información -->
             <div class="form-columns">
@@ -75,7 +95,7 @@
                             <label for="transporte">Transporte *</label>
                             <select id="transporte" required>
                                 <option value="">Selecciona una opción</option>
-                                <option value="avisot">Avión incluido</option>
+                                <option value="avion">Avión incluido</option>
                                 <option value="terrestre">Transporte terrestre</option>
                                 <option value="ninguno">Sin transporte</option>
                             </select>
@@ -95,14 +115,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="servicios">Servicios incluidos</label>
-                        <select id="servicios" multiple class="multi-select">
-                            <option value="desayuno">Desayuno diario</option>
-                            <option value="tours">Tours guiados</option>
-                            <option value="traslados">Traslados aeropuerto-hotel</option>
-                            <option value="seguro">Seguro de viaje</option>
-                        </select>
-                        <small>Mantén presionado Ctrl (Cmd en Mac) para seleccionar varios.</small>
+                        <span class="group-label">Servicios incluidos</span>
+                        <div class="service-options">
+                            <label class="service-option"><input type="checkbox" name="servicios" value="desayuno"> <span>Desayuno diario</span></label>
+                            <label class="service-option"><input type="checkbox" name="servicios" value="tours"> <span>Tours guiados</span></label>
+                            <label class="service-option"><input type="checkbox" name="servicios" value="traslados"> <span>Traslados aeropuerto-hotel</span></label>
+                            <label class="service-option"><input type="checkbox" name="servicios" value="seguro"> <span>Seguro de viaje</span></label>
+                            <label class="service-option"><input type="checkbox" id="toggleOtro" aria-controls="otherServiceEntry"> <span>Otro</span></label>
+                        </div>
+                        <div class="other-service-entry" id="otherServiceEntry" hidden>
+                            <input type="text" id="otherServiceInput" placeholder="Escribe otro servicio" aria-label="Nombre del otro servicio">
+                            <button type="button" class="btn btn-secondary" id="addOtherService">Agregar</button>
+                        </div>
+                        <div class="service-options custom-services" id="customServices" aria-live="polite"></div>
+                        <small id="otherServiceStatus" aria-live="polite"></small>
                     </div>
                 </section>
 
@@ -148,6 +174,7 @@
 
             <!-- Botones de Acción -->
             <div class="form-actions">
+                <p id="formStatus" class="status-message" role="status"></p>
                 <button type="button" id="btnCancelar" class="btn btn-secondary">Cancelar</button>
                 <button type="submit" class="btn btn-primary">Guardar paquete</button>
             </div>
@@ -155,6 +182,8 @@
         </form>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+    <script src="supabase-config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -6,8 +6,8 @@
 }
 
 body {
-    background-color: #95a8a2;
-    color: #333;
+    background-color: #edf3f0;
+    color: #263b36;
     padding: 30px 20px;
 }
 
@@ -15,7 +15,7 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     background: #ffffff;
-    border: 1px solid #dcdcdc;
+    border: 1px solid #d5e1dc;
     border-radius: 8px;
     padding: 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -23,19 +23,61 @@ body {
 
 .header-title {
     margin-bottom: 25px;
-    border-bottom: 1px solid #380505;
+    border-bottom: 2px solid #b5d1c5;
     padding-bottom: 15px;
 }
 
 .header-title h1 {
     font-size: 24px;
-    color: #111;
+    color: #183c32;
     margin-bottom: 5px;
 }
 
 .header-title p {
     font-size: 14px;
-    color: #666;
+    color: #61736d;
+}
+
+.auth-panel {
+    border-bottom: 1px solid #d5e1dc;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+}
+
+.auth-panel h2 {
+    font-size: 16px;
+    color: #21483d;
+    margin-bottom: 12px;
+}
+
+.auth-fields {
+    max-width: 720px;
+    margin-top: 12px;
+}
+
+.auth-fields .form-group {
+    min-width: 0;
+}
+
+.auth-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.auth-actions [hidden],
+.form-layout[hidden] {
+    display: none;
+}
+
+.status-message {
+    color: #52665f;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.status-message.error {
+    color: #b13d37;
 }
 
 .form-layout {
@@ -63,8 +105,13 @@ body {
 
 .form-section h2 {
     font-size: 16px;
-    color: #2c3e50;
-    margin-bottom: 15px;
+    color: #21483d;
+    background: #eaf3ef;
+    border: 1px solid #d3e5dc;
+    border-left: 4px solid #328268;
+    border-radius: 4px;
+    padding: 10px 12px;
+    margin-bottom: 16px;
 }
 
 .form-row {
@@ -90,12 +137,14 @@ body {
 }
 
 .form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
 .form-group input[type="date"],
 .form-group input[type="number"],
 .form-group select,
 .form-group textarea {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #c8d6d0;
     border-radius: 4px;
     font-size: 14px;
     outline: none;
@@ -105,11 +154,101 @@ body {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #0077aa;
+    border-color: #328268;
+    box-shadow: 0 0 0 3px rgba(50, 130, 104, 0.12);
 }
 
-.multi-select {
-    height: 90px;
+.group-label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.service-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.service-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 9px 10px;
+    border: 1px solid #d5e1dc;
+    border-radius: 4px;
+    background: #f8fbf9;
+    color: #334b43;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.service-option:has(input:checked) {
+    background: #e8f3ee;
+    border-color: #75a994;
+}
+
+.service-option input {
+    width: 16px;
+    height: 16px;
+    accent-color: #328268;
+    flex: 0 0 auto;
+}
+
+.other-service-entry {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.other-service-entry[hidden] {
+    display: none;
+}
+
+.other-service-entry input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid #c8d6d0;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.other-service-entry input:focus {
+    border-color: #328268;
+    box-shadow: 0 0 0 3px rgba(50, 130, 104, 0.12);
+}
+
+.custom-services:empty {
+    display: none;
+}
+
+#otherServiceStatus {
+    min-height: 14px;
+}
+
+@media (max-width: 520px) {
+    .form-columns,
+    .sidebar-column {
+        min-width: 0;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .service-options {
+        grid-template-columns: 1fr;
+    }
+
+    .other-service-entry {
+        flex-direction: column;
+    }
 }
 
 .form-group small {
@@ -143,10 +282,10 @@ body {
 }
 
 .poster-card {
-    border: 1px solid #dcdcdc;
+    border: 1px solid #d5e1dc;
     border-radius: 6px;
     padding: 15px;
-    background: #fafafa;
+    background: #f7faf8;
 }
 
 .poster-card h3 {
@@ -158,7 +297,7 @@ body {
 .poster-preview {
     width: 100%;
     height: 220px;
-    border: 2px dashed #ccc;
+    border: 2px dashed #b9cbc3;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -193,6 +332,11 @@ body {
     margin-top: 10px;
 }
 
+.form-actions .status-message {
+    margin-right: auto;
+    align-self: center;
+}
+
 .btn {
     padding: 10px 20px;
     font-size: 14px;
@@ -213,10 +357,10 @@ body {
 }
 
 .btn-primary {
-    background-color: #006688;
+    background-color: #28775f;
     color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #00526e;
+    background-color: #205f4c;
 }
